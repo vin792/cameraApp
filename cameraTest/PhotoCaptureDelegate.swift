@@ -8,6 +8,7 @@
 
 import AVFoundation
 import Photos
+import CoreLocation
 
 class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 	private(set) var requestedPhotoSettings: AVCapturePhotoSettings
@@ -17,11 +18,14 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 	private let completed: (PhotoCaptureDelegate) -> ()
 	
 	private var photoData: Data? = nil
+    
+    private var userLoc: CLLocation?
 
-	init(with requestedPhotoSettings: AVCapturePhotoSettings, willCapturePhotoAnimation: @escaping () -> (), completed: @escaping (PhotoCaptureDelegate) -> ()) {
+    init(with requestedPhotoSettings: AVCapturePhotoSettings, userLocation: CLLocation, willCapturePhotoAnimation: @escaping () -> (), completed: @escaping (PhotoCaptureDelegate) -> ()) {
 		self.requestedPhotoSettings = requestedPhotoSettings
 		self.willCapturePhotoAnimation = willCapturePhotoAnimation
 		self.completed = completed
+        self.userLoc = userLocation
 	}
 	
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
@@ -46,8 +50,6 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 		}
         print(photoData)
         
-        
-        
         let imageDataToSave = ["binaryPhoto" : "jakldjfa",
                                "latitude" : 231232,
                                "longitude" : 238237489,
@@ -55,7 +57,14 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
                                "username" : "generic user"
         ] as [String : Any]
         
+        
+        //userLocation when taking photo
+        if let userLocation = userLoc {
+            print(userLocation)
+        }
+ 
         let alamoService = AlamofireService()
         alamoService.sendImageDataToServer(imageDataToSave: imageDataToSave)
 	}
+
 }

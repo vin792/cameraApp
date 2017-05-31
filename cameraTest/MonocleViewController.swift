@@ -14,7 +14,6 @@ class MonocleViewController: UIViewController {
     
     //Variables
     let locationManager = CLLocationManager()
-    var userLocation: CLLocation?
     var initialMapRegion: Bool = false
     
     //IBOutlets
@@ -22,11 +21,6 @@ class MonocleViewController: UIViewController {
     
     //IBAction - display AR view
     @IBAction func showARController(_ sender: UIButton) {
-        if userLocation != nil {
-            print("\(userLocation)")
-        } else {
-            print("userLocation is nil")
-        }
     }
     
     override func viewDidLoad() {
@@ -46,7 +40,6 @@ extension MonocleViewController: CLLocationManagerDelegate {
         if locations.count > 0 {
             let location = locations.last!
             //print("latitude: \(location.coordinate.latitude), longitude: \(location.coordinate.longitude), altitude: \(location.altitude)")
-            userLocation = location
             
             //Set initial mapView region
             if location.horizontalAccuracy < 100, !initialMapRegion {

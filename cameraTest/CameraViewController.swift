@@ -20,6 +20,8 @@ class CameraViewController: UIViewController {
     var videoDeviceInput: AVCaptureDeviceInput!
     var isSessionRunning = false
     let videoDeviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera, AVCaptureDeviceType.builtInDualCamera], mediaType: AVMediaTypeVideo, position: .unspecified)!
+    let locationManager = CLLocationManager()
+    var userLocation: CLLocation?
     
     private enum SessionSetupResult {
         case success
@@ -55,7 +57,7 @@ class CameraViewController: UIViewController {
             }
             
             // Use a separate object for the photo capture delegate to isolate each capture life cycle.
-            let photoCaptureDelegate = PhotoCaptureDelegate(with: photoSettings, willCapturePhotoAnimation: {
+            let photoCaptureDelegate = PhotoCaptureDelegate(with: photoSettings, userLocation: self.userLocation!, willCapturePhotoAnimation: {
                 DispatchQueue.main.async { [unowned self] in
                     self.previewView.videoPreviewLayer.opacity = 0
                     UIView.animate(withDuration: 0.25) { [unowned self] in
@@ -266,6 +268,11 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation()
+        locationManager.requestWhenInUseAuthorization()
+        
         previewView.session = session
         
         switch AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) {
@@ -375,4 +382,18 @@ extension UIDeviceOrientation {
         }
     }
     
+}
+
+extension CameraViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if locations.count > 0 {
+            let location = locations.last!
+            //print("latitude: \(location.coordinate.latitude), longitude: \(location.coordinate.longitude), altitude: \(location.altitude)")
+            userLocation = location
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("hit the fail method")
+    }
 }
