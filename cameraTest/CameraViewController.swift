@@ -37,8 +37,8 @@ class CameraViewController: UIViewController {
     
     //IBAction - capture photo
     @IBAction func capturePhoto(_ sender: UIButton) {
-        
-        let videoPreviewLayerOrientation = previewView.videoPreviewLayer.connection.videoOrientation
+
+        let videoPreviewLayerOrientation = try previewView.videoPreviewLayer.connection.videoOrientation
         
         sessionQueue.async {
             // Update the photo output's connection to match the video orientation of the video preview layer.
@@ -374,4 +374,5 @@ extension UIDeviceOrientation {
         default: return nil
         }
     }
+    
 }

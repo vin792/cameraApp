@@ -46,5 +46,9 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 		}
         
         print(photoData)
+//        let imageDataToSave = ["testString" : "TESTINGTESTINGTESTINGTESTING"]
+        let alamoService = AlamofireService()
+//        alamoService.sendImageDataToServer(imageDataToSave: imageDataToSave)
+        alamoService.callAlamo(url: "http://localhost:3000/")
 	}
 }
