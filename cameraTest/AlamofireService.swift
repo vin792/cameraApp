@@ -30,10 +30,7 @@ class AlamofireService {
     }
     
 // MARK: - Send photo to server for storage
-    func sendImageDataToServer(imageDataToSave : [String : String]){
-        Alamofire.request("http://localhost:3000/dataFromUser", method: .post, parameters: imageDataToSave).responseJSON(completionHandler: {
-            response in
-            print(response)
-        })
+    func sendImageDataToServer(imageDataToSave : [String : Any]){
+        Alamofire.request("http://fb8df9c4.ngrok.io", method: .post, parameters: imageDataToSave)
     }
 }

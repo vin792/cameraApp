@@ -44,11 +44,18 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 			print("No photo data resource")
 			return
 		}
-        
         print(photoData)
-//        let imageDataToSave = ["testString" : "TESTINGTESTINGTESTINGTESTING"]
+        
+        
+        
+        let imageDataToSave = ["binaryPhoto" : "jakldjfa",
+                               "latitude" : 231232,
+                               "longitude" : 238237489,
+                               "altitude" : 0098908,
+                               "username" : "generic user"
+        ] as [String : Any]
+        
         let alamoService = AlamofireService()
-//        alamoService.sendImageDataToServer(imageDataToSave: imageDataToSave)
-        alamoService.callAlamo(url: "http://localhost:3000/")
+        alamoService.sendImageDataToServer(imageDataToSave: imageDataToSave)
 	}
 }
