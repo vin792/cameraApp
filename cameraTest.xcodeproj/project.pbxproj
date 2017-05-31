@@ -170,7 +170,7 @@
 				TargetAttributes = {
 					8597CF171EDE5A1E00DB0C79 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = M8LZR6NRDC;
+						DevelopmentTeam = 6Z9R6NNNB2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -391,10 +391,10 @@
 			baseConfigurationReference = 0CFD957AE72C90EDFE600B8F /* Pods-cameraTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = M8LZR6NRDC;
+				DEVELOPMENT_TEAM = 6Z9R6NNNB2;
 				INFOPLIST_FILE = cameraTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jordan.Weatherford;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vinny315.cameratestapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -405,10 +405,10 @@
 			baseConfigurationReference = 1A581198CBB859CD2AF82B36 /* Pods-cameraTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = M8LZR6NRDC;
+				DEVELOPMENT_TEAM = 6Z9R6NNNB2;
 				INFOPLIST_FILE = cameraTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Jordan.Weatherford;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vinny315.cameratestapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

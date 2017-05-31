@@ -92,12 +92,35 @@
                     <view key="view" contentMode="scaleToFill" id="zGP-Rd-3jn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ddw-qv-ISl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyP-h8-ZCf">
+                                <rect key="frame" x="230" y="617" width="129" height="30"/>
+                                <state key="normal" title="Augmented Reality"/>
+                                <connections>
+                                    <action selector="showARController:" destination="llo-YC-c31" eventType="touchUpInside" id="SaO-V5-Pkg"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XyP-h8-ZCf" firstAttribute="trailing" secondItem="zGP-Rd-3jn" secondAttribute="trailingMargin" id="8dR-hN-vx8"/>
+                            <constraint firstAttribute="trailing" secondItem="ddw-qv-ISl" secondAttribute="trailing" id="JOR-Gm-PlN"/>
+                            <constraint firstItem="ddw-qv-ISl" firstAttribute="leading" secondItem="zGP-Rd-3jn" secondAttribute="leading" id="Vmz-5o-10B"/>
+                            <constraint firstItem="eJI-hy-xxY" firstAttribute="top" secondItem="XyP-h8-ZCf" secondAttribute="bottom" constant="20" id="YGB-vq-bBz"/>
+                            <constraint firstItem="eJI-hy-xxY" firstAttribute="top" secondItem="ddw-qv-ISl" secondAttribute="bottom" id="goC-C3-29k"/>
+                            <constraint firstItem="ddw-qv-ISl" firstAttribute="top" secondItem="zGP-Rd-3jn" secondAttribute="top" id="lBK-6L-bqb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="ddw-qv-ISl" id="DoI-Z5-OQJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htZ-uk-cYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1841" y="66"/>
+            <point key="canvasLocation" x="1840.8" y="65.217391304347828"/>
         </scene>
     </scenes>
     <resources>
