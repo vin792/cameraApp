@@ -15,6 +15,7 @@
 		8597CF311EDE5A4D00DB0C79 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8597CF301EDE5A4D00DB0C79 /* CameraViewController.swift */; };
 		8597CF331EDE5A7100DB0C79 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8597CF321EDE5A7100DB0C79 /* PreviewView.swift */; };
 		8597CF351EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8597CF341EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift */; };
+		8597CF371EDE77C900DB0C79 /* MonocleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8597CF361EDE77C900DB0C79 /* MonocleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8597CF301EDE5A4D00DB0C79 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		8597CF321EDE5A7100DB0C79 /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		8597CF341EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		8597CF361EDE77C900DB0C79 /* MonocleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonocleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,13 +66,22 @@
 				8597CF321EDE5A7100DB0C79 /* PreviewView.swift */,
 				8597CF1B1EDE5A1E00DB0C79 /* AppDelegate.swift */,
 				8597CF1F1EDE5A1E00DB0C79 /* Main.storyboard */,
-				8597CF301EDE5A4D00DB0C79 /* CameraViewController.swift */,
+				8597CF381EDE77CF00DB0C79 /* View Controllers */,
 				8597CF251EDE5A1E00DB0C79 /* Assets.xcassets */,
 				8597CF271EDE5A1E00DB0C79 /* LaunchScreen.storyboard */,
 				8597CF2A1EDE5A1E00DB0C79 /* Info.plist */,
 				8597CF221EDE5A1E00DB0C79 /* cameraTest.xcdatamodeld */,
 			);
 			path = cameraTest;
+			sourceTree = "<group>";
+		};
+		8597CF381EDE77CF00DB0C79 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8597CF361EDE77C900DB0C79 /* MonocleViewController.swift */,
+				8597CF301EDE5A4D00DB0C79 /* CameraViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 			files = (
 				8597CF241EDE5A1E00DB0C79 /* cameraTest.xcdatamodeld in Sources */,
 				8597CF331EDE5A7100DB0C79 /* PreviewView.swift in Sources */,
+				8597CF371EDE77C900DB0C79 /* MonocleViewController.swift in Sources */,
 				8597CF1C1EDE5A1E00DB0C79 /* AppDelegate.swift in Sources */,
 				8597CF351EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift in Sources */,
 				8597CF311EDE5A4D00DB0C79 /* CameraViewController.swift in Sources */,

@@ -27,7 +27,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qM6-X6-Uxu">
-                                <rect key="frame" x="314" y="52" width="29" height="24"/>
+                                <rect key="frame" x="314" y="109" width="29" height="24"/>
                                 <state key="normal" image="camera_icon_snap"/>
                                 <connections>
                                     <action selector="changeCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1RZ-2q-eR1"/>
@@ -40,6 +40,16 @@
                                     <action selector="capturePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7z-0e-AnA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxq-dR-665">
+                                <rect key="frame" x="313" y="52" width="30" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="M">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="monocleButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f4J-NF-NMd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -47,16 +57,19 @@
                             <constraint firstAttribute="trailing" secondItem="lK0-z9-VNc" secondAttribute="trailing" id="7QW-F2-Bhi"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a2g-1C-LuD" secondAttribute="bottom" constant="24" id="A0Q-mD-sjR"/>
                             <constraint firstItem="lK0-z9-VNc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CZ5-dg-5KW"/>
+                            <constraint firstItem="Mxq-dR-665" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="KYb-sN-Sp9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lK0-z9-VNc" secondAttribute="bottom" id="LBD-TS-BQw"/>
-                            <constraint firstItem="qM6-X6-Uxu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="Obo-KN-sby"/>
                             <constraint firstItem="lK0-z9-VNc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="adz-9L-Ae6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qM6-X6-Uxu" secondAttribute="trailing" constant="16" id="e7p-WE-gx9"/>
+                            <constraint firstItem="qM6-X6-Uxu" firstAttribute="top" secondItem="Mxq-dR-665" secondAttribute="bottom" constant="16" id="ijO-hG-G3k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mxq-dR-665" secondAttribute="trailing" constant="16" id="qcH-Ki-PhT"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="a2g-1C-LuD" id="6Sy-Q1-Net"/>
                         <outlet property="changeCameraButton" destination="qM6-X6-Uxu" id="XyX-nH-gVw"/>
                         <outlet property="previewView" destination="lK0-z9-VNc" id="lL1-wd-c6h"/>
+                        <segue destination="llo-YC-c31" kind="show" identifier="MonocleSegue" id="UMQ-4U-ngw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,6 +79,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="972" y="66.11694152923539"/>
+        </scene>
+        <!--Monocle View Controller-->
+        <scene sceneID="6Q8-1I-KEn">
+            <objects>
+                <viewController id="llo-YC-c31" customClass="MonocleViewController" customModule="cameraTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6F6-qH-0Ce"/>
+                        <viewControllerLayoutGuide type="bottom" id="eJI-hy-xxY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zGP-Rd-3jn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htZ-uk-cYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1841" y="66"/>
         </scene>
     </scenes>
     <resources>

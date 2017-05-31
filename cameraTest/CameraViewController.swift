@@ -111,7 +111,7 @@ class CameraViewController: UIViewController {
         }
     }
     
-    //IBAction - change camera
+    //IBAction - change camera between front and back
     @IBAction func changeCamera(_ changeCameraButton: UIButton) {
         changeCameraButton.isEnabled = false
         
@@ -172,7 +172,13 @@ class CameraViewController: UIViewController {
         }
     }
     
+    //IBAction - segue to monocle
+    @IBAction func monocleButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "MonocleSegue", sender: nil)
+    }
     
+    
+    //Configure AVcapture photo session
     private func configureSession() {
         if setupResult != .success {
             return
@@ -185,6 +191,7 @@ class CameraViewController: UIViewController {
          AVCaptureMovieFileOutput does not support movie recording with AVCaptureSessionPresetPhoto.
          */
         session.sessionPreset = AVCaptureSessionPresetPhoto
+        //session.sessionPreset = AVCaptureSessionPreset1920x1080
         
         // Add video input.
         do {
@@ -255,6 +262,7 @@ class CameraViewController: UIViewController {
         session.commitConfiguration()
     }
     
+    //View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -336,15 +344,6 @@ class CameraViewController: UIViewController {
         
         super.viewWillDisappear(animated)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -357,6 +356,11 @@ class CameraViewController: UIViewController {
             
             videoPreviewLayerConnection.videoOrientation = newVideoOrientation
         }
+    }
+    
+    // MARK: Lock app orientation
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 }
 
