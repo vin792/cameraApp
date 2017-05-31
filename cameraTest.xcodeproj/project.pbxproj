@@ -62,11 +62,11 @@
 		8597CF1A1EDE5A1E00DB0C79 /* cameraTest */ = {
 			isa = PBXGroup;
 			children = (
-				8597CF341EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift */,
-				8597CF321EDE5A7100DB0C79 /* PreviewView.swift */,
+				8597CF3A1EDE9C0200DB0C79 /* Delegates */,
+				8597CF391EDE9BF900DB0C79 /* Views */,
 				8597CF1B1EDE5A1E00DB0C79 /* AppDelegate.swift */,
 				8597CF1F1EDE5A1E00DB0C79 /* Main.storyboard */,
-				8597CF381EDE77CF00DB0C79 /* View Controllers */,
+				8597CF381EDE77CF00DB0C79 /* Controllers */,
 				8597CF251EDE5A1E00DB0C79 /* Assets.xcassets */,
 				8597CF271EDE5A1E00DB0C79 /* LaunchScreen.storyboard */,
 				8597CF2A1EDE5A1E00DB0C79 /* Info.plist */,
@@ -75,13 +75,29 @@
 			path = cameraTest;
 			sourceTree = "<group>";
 		};
-		8597CF381EDE77CF00DB0C79 /* View Controllers */ = {
+		8597CF381EDE77CF00DB0C79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				8597CF361EDE77C900DB0C79 /* MonocleViewController.swift */,
 				8597CF301EDE5A4D00DB0C79 /* CameraViewController.swift */,
 			);
-			name = "View Controllers";
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8597CF391EDE9BF900DB0C79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8597CF321EDE5A7100DB0C79 /* PreviewView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		8597CF3A1EDE9C0200DB0C79 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				8597CF341EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
