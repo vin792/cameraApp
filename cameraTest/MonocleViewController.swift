@@ -36,7 +36,6 @@ class MonocleViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.mapView.addAnnotation(mapAnnotation)
                     }
-                    self.alamoFire.getS3Image(fileLocation: mapAnnotation.title!)
                 }
             })
         }
