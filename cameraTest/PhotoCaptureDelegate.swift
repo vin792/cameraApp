@@ -68,5 +68,4 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
         //send photo data to server
         alamoService.sendImageDataToServer(imageDataToSave: imageDataToSave)
 	}
-
 }

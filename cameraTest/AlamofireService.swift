@@ -7,15 +7,26 @@
 //
 
 import Alamofire
+import CoreLocation
 
 class AlamofireService {
     typealias JSONStandard = [String : AnyObject]
 
-//  MARK: - Request from server
-    func callAlamo(url : String){
-        Alamofire.request(url).responseJSON(completionHandler: {
+//  MARK: - Get photos from server
+    func getPhotos(userLocation: CLLocation){
+        
+        let parameters = ["latitude": userLocation.coordinate.latitude,
+                          "longitude": userLocation.coordinate.longitude,
+                          "altitude": userLocation.altitude]
+        
+        //post request to get data
+        Alamofire.request("http://16bc29a0.ngrok.io/getPhotos", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
             response in
-            self.parseJSON(JSONData: response.data!)
+            
+            if let JSON = response.result.value {
+                print(JSON)
+            }
+            //self.parseJSON(JSONData: response.data!)
         })
     }
     

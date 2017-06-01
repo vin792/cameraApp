@@ -16,12 +16,17 @@ class MonocleViewController: UIViewController {
     //Variables
     let locationManager = CLLocationManager()
     var initialMapRegion: Bool = false
+    let alamoFire = AlamofireService()
+    var userLocation: CLLocation?
     
     //IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     
     //IBAction - display AR view
     @IBAction func showARController(_ sender: UIButton) {
+        if let userLoc = userLocation {
+            alamoFire.getPhotos(userLocation: userLoc)
+        }
     }
     
     //IBAction - return to camera
@@ -46,6 +51,7 @@ extension MonocleViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
             let location = locations.last!
+            userLocation = location
             
             //Set initial mapView region
             if location.horizontalAccuracy < 100, !initialMapRegion {
