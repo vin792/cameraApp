@@ -11,7 +11,7 @@ import Alamofire
 class AlamofireService {
     typealias JSONStandard = [String : AnyObject]
 
-//    MARK: - Request from server
+//  MARK: - Request from server
     func callAlamo(url : String){
         Alamofire.request(url).responseJSON(completionHandler: {
             response in
@@ -52,6 +52,6 @@ class AlamofireService {
                 multiPartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
             }
             
-        }, to: "http://8cccf1ce.ngrok.io/savePhoto") { (encodingResult) in }
+        }, to: "http://16bc29a0.ngrok.io/savePhoto") { (encodingResult) in }
     }
 }

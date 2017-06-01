@@ -192,8 +192,8 @@ class CameraViewController: UIViewController {
          We do not create an AVCaptureMovieFileOutput when setting up the session because the
          AVCaptureMovieFileOutput does not support movie recording with AVCaptureSessionPresetPhoto.
          */
-        session.sessionPreset = AVCaptureSessionPresetPhoto
-        //session.sessionPreset = AVCaptureSessionPreset1920x1080
+        //session.sessionPreset = AVCaptureSessionPresetPhoto
+        session.sessionPreset = AVCaptureSessionPreset1920x1080
         
         // Add video input.
         do {

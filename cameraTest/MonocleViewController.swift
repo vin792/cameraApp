@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import HDAugmentedReality
 
 class MonocleViewController: UIViewController {
     
