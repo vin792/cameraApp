@@ -21,7 +21,7 @@ class AlamofireService {
                           "altitude": userLocation.altitude]
         
         //post request to get data
-        Alamofire.request("http://16bc29a0.ngrok.io/getPhotos", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
+        Alamofire.request("http://8891adb5.ngrok.io/getPhotos", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
             response in
             
             var annotations = Array<ARAnnotation>()
@@ -100,6 +100,6 @@ class AlamofireService {
                 multiPartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
             }
             
-        }, to: "http://16bc29a0.ngrok.io/savePhoto") { (encodingResult) in }
+        }, to: "http://8891adb5.ngrok.io/savePhoto") { (encodingResult) in }
     }
 }
