@@ -30,7 +30,12 @@ class MonocleViewController: UIViewController {
                 PhotoAnnotations in
                 self.annotations = PhotoAnnotations
                 for annotation in self.annotations {
-                    print(annotation.location)
+                    let mapAnnotation = MKPointAnnotation()
+                    mapAnnotation.coordinate = annotation.location.coordinate
+                    mapAnnotation.title = annotation.identifier
+                    DispatchQueue.main.async {
+                        self.mapView.addAnnotation(mapAnnotation)
+                    }
                 }
             })
         }
