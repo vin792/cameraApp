@@ -30,7 +30,28 @@ class AlamofireService {
     }
     
 // MARK: - Send photo to server for storage
-    func sendImageDataToServer(imageDataToSave : [String : Any]){
-        Alamofire.request("http://fb8df9c4.ngrok.io", method: .post, parameters: imageDataToSave)
+    func sendImageDataToServer(imageDataToSave: Dictionary<String, Any>){
+        
+        let photoData = imageDataToSave["photoData"] as! Data
+        let latitude = "\(String(describing: imageDataToSave["latitude"]!))"
+        let longitude = "\(String(describing: imageDataToSave["longitude"]!))"
+        let altitude = "\(String(describing: imageDataToSave["altitude"]!))"
+        let username = "\(String(describing: imageDataToSave["username"]!))"
+        
+        let parameters = [
+            "latitude": latitude,
+            "longitude": longitude,
+            "altitude": altitude,
+            "username": username]
+        
+        Alamofire.upload(multipartFormData: { multiPartFormData in
+            
+            multiPartFormData.append(photoData, withName: "photoData", fileName: "photo.jpg", mimeType: "image/jpeg")
+            
+            for (key, value) in parameters {
+                multiPartFormData.append(value.data(using: String.Encoding.utf8)!, withName: key)
+            }
+            
+        }, to: "http://8cccf1ce.ngrok.io/savePhoto") { (encodingResult) in }
     }
 }

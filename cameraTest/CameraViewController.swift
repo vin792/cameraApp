@@ -268,6 +268,9 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cameraButton.layer.cornerRadius = 25
+        cameraButton.clipsToBounds = true
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
@@ -388,7 +391,6 @@ extension CameraViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
             let location = locations.last!
-            //print("latitude: \(location.coordinate.latitude), longitude: \(location.coordinate.longitude), altitude: \(location.altitude)")
             userLocation = location
         }
     }

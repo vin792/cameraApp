@@ -20,6 +20,8 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 	private var photoData: Data? = nil
     
     private var userLoc: CLLocation?
+    
+    let alamoService = AlamofireService()
 
     init(with requestedPhotoSettings: AVCapturePhotoSettings, userLocation: CLLocation, willCapturePhotoAnimation: @escaping () -> (), completed: @escaping (PhotoCaptureDelegate) -> ()) {
 		self.requestedPhotoSettings = requestedPhotoSettings
@@ -48,22 +50,22 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 			print("No photo data resource")
 			return
 		}
-        print(photoData)
         
-        let imageDataToSave = ["binaryPhoto" : "jakldjfa",
-                               "latitude" : 231232,
-                               "longitude" : 238237489,
-                               "altitude" : 0098908,
-                               "username" : "generic user"
-        ] as [String : Any]
+        var imageDataToSave = Dictionary<String, Any>()
         
-        
-        //userLocation when taking photo
+        //userLocation when taking photo and setting photo meta data
         if let userLocation = userLoc {
             print(userLocation)
+            imageDataToSave["photoData"] = photoData
+            imageDataToSave["latitude"] = userLocation.coordinate.latitude
+            imageDataToSave["longitude"] = userLocation.coordinate.longitude
+            imageDataToSave["altitude"] = userLocation.altitude
+            imageDataToSave["username"] = "user1"
+        } else {
+            print("unable to get user location")
         }
- 
-        let alamoService = AlamofireService()
+        
+        //send photo data to server
         alamoService.sendImageDataToServer(imageDataToSave: imageDataToSave)
 	}
 

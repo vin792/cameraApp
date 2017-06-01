@@ -23,6 +23,12 @@ class MonocleViewController: UIViewController {
     @IBAction func showARController(_ sender: UIButton) {
     }
     
+    //IBAction - return to camera
+    @IBAction func showCameraViewController(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +45,6 @@ extension MonocleViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
             let location = locations.last!
-            //print("latitude: \(location.coordinate.latitude), longitude: \(location.coordinate.longitude), altitude: \(location.altitude)")
             
             //Set initial mapView region
             if location.horizontalAccuracy < 100, !initialMapRegion {

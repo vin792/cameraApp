@@ -27,21 +27,33 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qM6-X6-Uxu">
-                                <rect key="frame" x="314" y="109" width="29" height="24"/>
+                                <rect key="frame" x="50" y="610" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Z6o-LC-PMb"/>
+                                    <constraint firstAttribute="width" constant="50" id="oz6-nK-7bQ"/>
+                                </constraints>
                                 <state key="normal" image="camera_icon_snap"/>
                                 <connections>
                                     <action selector="changeCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1RZ-2q-eR1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2g-1C-LuD">
-                                <rect key="frame" x="172" y="613" width="30" height="30"/>
-                                <state key="normal" image="createsnap_btn"/>
+                                <rect key="frame" x="162.5" y="609" width="50" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="CBW-Si-jkf"/>
+                                    <constraint firstAttribute="height" constant="50" id="OKB-vF-8V2"/>
+                                </constraints>
                                 <connections>
                                     <action selector="capturePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7z-0e-AnA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mxq-dR-665">
-                                <rect key="frame" x="313" y="52" width="30" height="41"/>
+                                <rect key="frame" x="275" y="609" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="5zg-7i-yJp"/>
+                                    <constraint firstAttribute="height" constant="50" id="bwN-c0-gKU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <state key="normal" title="M">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,16 +65,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a2g-1C-LuD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6zU-WM-mde"/>
+                            <constraint firstItem="a2g-1C-LuD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1QM-JF-pte"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mxq-dR-665" secondAttribute="trailing" constant="34" id="6wy-Jf-lVl"/>
                             <constraint firstAttribute="trailing" secondItem="lK0-z9-VNc" secondAttribute="trailing" id="7QW-F2-Bhi"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a2g-1C-LuD" secondAttribute="bottom" constant="24" id="A0Q-mD-sjR"/>
                             <constraint firstItem="lK0-z9-VNc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CZ5-dg-5KW"/>
-                            <constraint firstItem="Mxq-dR-665" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="KYb-sN-Sp9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lK0-z9-VNc" secondAttribute="bottom" id="LBD-TS-BQw"/>
+                            <constraint firstItem="qM6-X6-Uxu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="34" id="VT7-0q-xTC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qM6-X6-Uxu" secondAttribute="bottom" constant="7" id="Yww-NC-cR7"/>
                             <constraint firstItem="lK0-z9-VNc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="adz-9L-Ae6"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qM6-X6-Uxu" secondAttribute="trailing" constant="16" id="e7p-WE-gx9"/>
-                            <constraint firstItem="qM6-X6-Uxu" firstAttribute="top" secondItem="Mxq-dR-665" secondAttribute="bottom" constant="16" id="ijO-hG-G3k"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Mxq-dR-665" secondAttribute="trailing" constant="16" id="qcH-Ki-PhT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Mxq-dR-665" secondAttribute="bottom" constant="8" id="b7J-99-BBn"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a2g-1C-LuD" secondAttribute="bottom" constant="8" id="y3e-g6-9ta"/>
                         </constraints>
                     </view>
                     <connections>
@@ -97,17 +109,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyP-h8-ZCf">
-                                <rect key="frame" x="230" y="617" width="129" height="30"/>
-                                <state key="normal" title="Augmented Reality"/>
+                                <rect key="frame" x="300" y="617" width="59" height="30"/>
+                                <state key="normal" title="Monocle"/>
                                 <connections>
                                     <action selector="showARController:" destination="llo-YC-c31" eventType="touchUpInside" id="SaO-V5-Pkg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yej-yl-2DN">
+                                <rect key="frame" x="19" y="617" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="showCameraViewController:" destination="llo-YC-c31" eventType="touchUpInside" id="D0F-fA-uDC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XyP-h8-ZCf" firstAttribute="trailing" secondItem="zGP-Rd-3jn" secondAttribute="trailingMargin" id="8dR-hN-vx8"/>
+                            <constraint firstItem="yej-yl-2DN" firstAttribute="leading" secondItem="zGP-Rd-3jn" secondAttribute="leadingMargin" constant="3" id="FUT-j0-cbF"/>
                             <constraint firstAttribute="trailing" secondItem="ddw-qv-ISl" secondAttribute="trailing" id="JOR-Gm-PlN"/>
+                            <constraint firstItem="eJI-hy-xxY" firstAttribute="top" secondItem="yej-yl-2DN" secondAttribute="bottom" constant="20" id="OHE-vK-Njq"/>
                             <constraint firstItem="ddw-qv-ISl" firstAttribute="leading" secondItem="zGP-Rd-3jn" secondAttribute="leading" id="Vmz-5o-10B"/>
                             <constraint firstItem="eJI-hy-xxY" firstAttribute="top" secondItem="XyP-h8-ZCf" secondAttribute="bottom" constant="20" id="YGB-vq-bBz"/>
                             <constraint firstItem="eJI-hy-xxY" firstAttribute="top" secondItem="ddw-qv-ISl" secondAttribute="bottom" id="goC-C3-29k"/>
@@ -125,6 +146,5 @@
     </scenes>
     <resources>
         <image name="camera_icon_snap" width="29" height="24"/>
-        <image name="createsnap_btn" width="30" height="30"/>
     </resources>
 </document>
