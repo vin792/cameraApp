@@ -24,7 +24,9 @@ class AlamofireService {
             response in
             
             if let JSON = response.result.value {
-                print(JSON)
+                if let data = JSON as? [String: Any] {
+                    print(data)
+                }
             }
             //self.parseJSON(JSONData: response.data!)
         })
