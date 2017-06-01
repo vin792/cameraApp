@@ -8,6 +8,7 @@
 
 import Alamofire
 import CoreLocation
+import HDAugmentedReality
 
 class AlamofireService {
     typealias JSONStandard = [String : AnyObject]
@@ -23,12 +24,46 @@ class AlamofireService {
         Alamofire.request("http://16bc29a0.ngrok.io/getPhotos", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON(completionHandler: {
             response in
             
+            var annotations = Array<ARAnnotation>()
+            var responsePhotos = Array<Any>()
+            var responseStatus: Bool = false
+            
             if let JSON = response.result.value {
-                if let data = JSON as? [String: Any] {
-                    print(data)
+                if let data = JSON as? Dictionary<String, Any> {
+                    for (key, value) in data {
+                        if key == "status" {
+                            responseStatus = value as! Bool
+                        }
+                        
+                        if key == "photos" {
+                            responsePhotos = value as! Array<Any>
+                        }
+                    }
                 }
             }
-            //self.parseJSON(JSONData: response.data!)
+            
+            
+            if responseStatus {
+                for photo in responsePhotos {
+                    let photoDict = photo as! Dictionary<String, Any>
+                    
+                    let latitude = photoDict["latitude"] as! CLLocationDegrees
+                    let longitude  = photoDict["longitude"] as! CLLocationDegrees
+                    let photoName = photoDict["_id"] as! String
+                    let filePath = photoDict["location"] as! String
+                    
+                    let location = CLLocation(latitude: latitude, longitude: longitude)
+                    
+                    let newARAnnotation = ARAnnotation(identifier: filePath, title: photoName, location: location)
+                    
+                    if let newARAnno = newARAnnotation {
+                        annotations.append(newARAnno)
+                    }
+                }
+            }
+            
+            
+            
         })
     }
     
