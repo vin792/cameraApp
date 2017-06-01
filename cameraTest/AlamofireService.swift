@@ -69,12 +69,11 @@ class AlamofireService {
     
 //  MARK: - gets3Image
     func getS3Image(fileLocation: String){
-        Alamofire.download(fileLocation).responseData { response in
-            if let data = response.result.value {
-                let image = UIImage(data: data)
-                print(data)
-            }
+        Alamofire.request(fileLocation).responseData { response in
+            guard let data = response.result.value else { return }
+            let image = UIImage(data: data)
         }
+        
     }
     
 // MARK: - Send photo to server for storage
