@@ -23,7 +23,7 @@ class MonocleViewController: UIViewController {
     //IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     
-    //IBAction - display AR view
+    //IBAction - pressed monocle
     @IBAction func showARController(_ sender: UIButton) {
         if let userLoc = userLocation {
             alamoFire.getPhotos(userLocation: userLoc, completionHandler: {
@@ -36,6 +36,7 @@ class MonocleViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.mapView.addAnnotation(mapAnnotation)
                     }
+                    self.alamoFire.getS3Image(fileLocation: mapAnnotation.title!)
                 }
             })
         }

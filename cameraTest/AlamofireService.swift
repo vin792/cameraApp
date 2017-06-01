@@ -67,13 +67,13 @@ class AlamofireService {
         })
     }
     
-//  MARK: - Parse JSON
-    func parseJSON(JSONData : Data){
-        do {
-            let readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! JSONStandard
-            print(readableJSON)
-        } catch {
-            print(error)
+//  MARK: - gets3Image
+    func getS3Image(fileLocation: String){
+        Alamofire.download(fileLocation).responseData { response in
+            if let data = response.result.value {
+                let image = UIImage(data: data)
+                print(data)
+            }
         }
     }
     
