@@ -14,7 +14,7 @@ class AlamofireService {
     typealias JSONStandard = [String : AnyObject]
 
 //  MARK: - Get photos from server
-    func getPhotos(userLocation: CLLocation){
+    func getPhotos(userLocation: CLLocation, completionHandler: @escaping (Array<ARAnnotation>) -> ()){
         
         let parameters = ["latitude": userLocation.coordinate.latitude,
                           "longitude": userLocation.coordinate.longitude,
@@ -62,7 +62,7 @@ class AlamofireService {
                 }
             }
             
-            
+            completionHandler(annotations)
             
         })
     }

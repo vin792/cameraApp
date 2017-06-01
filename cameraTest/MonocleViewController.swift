@@ -18,6 +18,7 @@ class MonocleViewController: UIViewController {
     var initialMapRegion: Bool = false
     let alamoFire = AlamofireService()
     var userLocation: CLLocation?
+    var annotations = Array<ARAnnotation>()
     
     //IBOutlets
     @IBOutlet weak var mapView: MKMapView!
@@ -25,7 +26,13 @@ class MonocleViewController: UIViewController {
     //IBAction - display AR view
     @IBAction func showARController(_ sender: UIButton) {
         if let userLoc = userLocation {
-            alamoFire.getPhotos(userLocation: userLoc)
+            alamoFire.getPhotos(userLocation: userLoc, completionHandler: {
+                PhotoAnnotations in
+                self.annotations = PhotoAnnotations
+                for annotation in self.annotations {
+                    print(annotation.location)
+                }
+            })
         }
     }
     
@@ -43,6 +50,11 @@ class MonocleViewController: UIViewController {
         locationManager.startUpdatingLocation()
         locationManager.requestWhenInUseAuthorization()
         mapView.showsUserLocation = true
+    }
+    
+    // MARK: Lock app orientation
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
     }
 
 }
