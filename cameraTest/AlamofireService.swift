@@ -68,10 +68,11 @@ class AlamofireService {
     }
     
 //  MARK: - gets3Image
-    func getS3Image(fileLocation: String){
+    func getS3Image(fileLocation: String, completionHandler: @escaping (UIImage) -> ()){
         Alamofire.request(fileLocation).responseData { response in
             guard let data = response.result.value else { return }
-            let image = UIImage(data: data)
+            let s3Image = UIImage(data: data)
+            completionHandler(s3Image!)
         }
         
     }

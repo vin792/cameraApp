@@ -9,16 +9,13 @@
 import UIKit
 import HDAugmentedReality
 
-//1
 protocol AnnotationViewDelegate {
     func didTouch(annotationView: AnnotationView)
 }
 
-//2
 class AnnotationView: ARAnnotationView {
-    //3
-    var titleLabel: UILabel?
     var distanceLabel: UILabel?
+    var image: UIImageView?
     var delegate: AnnotationViewDelegate?
     
     override func didMoveToSuperview() {
@@ -27,38 +24,41 @@ class AnnotationView: ARAnnotationView {
         loadUI()
     }
     
-    //4
     func loadUI() {
-        titleLabel?.removeFromSuperview()
-        distanceLabel?.removeFromSuperview()
         
-        let label = UILabel(frame: CGRect(x: 10, y: 0, width: self.frame.size.width, height: 30))
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = 0
-        label.backgroundColor = UIColor(white: 0.3, alpha: 0.7)
-        label.textColor = UIColor.white
-        self.addSubview(label)
-        self.titleLabel = label
+        let alamofire = AlamofireService()
         
-        distanceLabel = UILabel(frame: CGRect(x: 10, y: 30, width: self.frame.size.width, height: 20))
-        distanceLabel?.backgroundColor = UIColor(white: 0.3, alpha: 0.7)
-        distanceLabel?.textColor = UIColor.green
-        distanceLabel?.font = UIFont.systemFont(ofSize: 12)
-        self.addSubview(distanceLabel!)
+        image?.removeFromSuperview()
+        image = UIImageView(frame: CGRect(x: 10, y: 30, width: 135, height: 240))
+        image?.layer.borderColor = UIColor.black.cgColor
+        image?.layer.borderWidth = 1
+        image?.isUserInteractionEnabled = true
         
-        if let annotation = annotation as? ARAnnotation {
-            distanceLabel?.text = String(format: "%.2f km", annotation.distanceFromUser / 1000)
-        }
+        alamofire.getS3Image(fileLocation: (annotation?.identifier)!, completionHandler: {s3Image in
+            
+            self.image?.image = s3Image
+            self.addSubview(self.image!)
+            
+            self.distanceLabel?.removeFromSuperview()
+            self.distanceLabel = UILabel(frame: CGRect(x: 10, y: 30, width: 135, height: 20))
+            self.distanceLabel?.backgroundColor = UIColor(white: 0.3, alpha: 0.7)
+            self.distanceLabel?.textColor = UIColor.green
+            self.distanceLabel?.font = UIFont.systemFont(ofSize: 12)
+            self.addSubview(self.distanceLabel!)
+            
+            if let annotation = self.annotation {
+                self.distanceLabel?.text = String(format: "%.2f km", annotation.distanceFromUser / 1000)
+            }
+            
+        })
     }
     
-    //1
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel?.frame = CGRect(x: 10, y: 0, width: self.frame.size.width, height: 30)
-        distanceLabel?.frame = CGRect(x: 10, y: 30, width: self.frame.size.width, height: 20)
+        distanceLabel?.frame = CGRect(x: 10, y: 30, width: 135, height: 20)
+        image?.frame = CGRect(x: 10, y: 30, width: 135, height: 240)
     }
     
-    //2
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.didTouch(annotationView: self)
     }

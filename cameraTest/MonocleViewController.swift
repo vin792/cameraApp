@@ -19,7 +19,7 @@ class MonocleViewController: UIViewController {
     let alamoFire = AlamofireService()
     var userLocation: CLLocation?
     var annotations = Array<ARAnnotation>()
-    fileprivate var arViewController: ARViewController!
+    var arViewController: ARViewController!
 
     
     //IBOutlets
@@ -27,6 +27,11 @@ class MonocleViewController: UIViewController {
     
     //IBAction - pressed monocle
     @IBAction func showARController(_ sender: UIButton) {
+        addPinstoMap(completionHandler: {self.showAR()})
+    }
+    
+    //Retrieve photos and add pins to map
+    func addPinstoMap(completionHandler: @escaping () -> ()) {
         if let userLoc = userLocation {
             alamoFire.getPhotos(userLocation: userLoc, completionHandler: {
                 PhotoAnnotations in
@@ -39,20 +44,20 @@ class MonocleViewController: UIViewController {
                         self.mapView.addAnnotation(mapAnnotation)
                     }
                 }
+                
+                completionHandler()
+                
             })
         }
-        showAR()
     }
     
     // show AR view
     func showAR(){
         arViewController = ARViewController()
-        arViewController.dataSource = self as? ARDataSource
+        arViewController.dataSource = self
         arViewController.setAnnotations(annotations)
-        arViewController.presenter.maxVisibleAnnotations = 30
-//        arViewController.headingSmoothingFactor = 0.05
+        //arViewController.presenter.maxVisibleAnnotations = 30
         self.present(arViewController, animated: true, completion: nil)
-        
     }
     
     
@@ -91,6 +96,7 @@ extension MonocleViewController: CLLocationManagerDelegate {
                 let span = MKCoordinateSpanMake(0.014, 0.014)
                 let region = MKCoordinateRegionMake(location.coordinate, span)
                 mapView.region = region
+                addPinstoMap(completionHandler: {})
             }
         }
     }
@@ -104,15 +110,16 @@ extension MonocleViewController: ARDataSource {
     func ar(_ arViewController: ARViewController, viewForAnnotation: ARAnnotation) -> ARAnnotationView {
         let annotationView = AnnotationView()
         annotationView.annotation = viewForAnnotation
-        annotationView.delegate = self as? AnnotationViewDelegate
+        annotationView.delegate = self
         annotationView.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
         
         return annotationView
     }
-    
-    func didTouch(annotationView: AnnotationView) {
-        print("Tapped view for POI: \(annotationView.titleLabel?.text)")
-    }
 }
 
+extension MonocleViewController: AnnotationViewDelegate {
+    func didTouch(annotationView: AnnotationView) {
+        print("Tapped view for POI:")
+    }
+}
 
