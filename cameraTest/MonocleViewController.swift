@@ -86,6 +86,7 @@ class MonocleViewController: UIViewController {
         if segue.identifier == "FullPhotoSegue" {
             let controller = segue.destination as! DisplayFullPhotoViewController
             controller.imageToDisplay = sender as? UIImage
+            controller.delegate = self
         }
     }
 }
@@ -129,4 +130,13 @@ extension MonocleViewController: AnnotationViewDelegate {
         performSegue(withIdentifier: "FullPhotoSegue", sender: annotationView.image?.image)
     }
 }
+
+extension MonocleViewController: FullPhotoDisplayDelegate {
+    func dismissView() {
+        dismiss(animated: true, completion: nil)
+        showAR()
+    }
+}
+
+
 

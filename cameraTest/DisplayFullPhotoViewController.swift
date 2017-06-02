@@ -12,13 +12,14 @@ class DisplayFullPhotoViewController: UIViewController {
     
     //Variables
     var imageToDisplay: UIImage?
+    var delegate: FullPhotoDisplayDelegate?
     
     //IBOutlets
     @IBOutlet weak var fullPhotoImageView: UIImageView!
     
     //IBAction - close view
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        delegate?.dismissView()
     }
     
     override func viewDidLoad() {

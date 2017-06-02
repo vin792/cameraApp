@@ -19,6 +19,7 @@
 		8597CF351EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8597CF341EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift */; };
 		8597CF371EDE77C900DB0C79 /* MonocleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8597CF361EDE77C900DB0C79 /* MonocleViewController.swift */; };
 		85F597361EE14438001F7DFA /* DisplayFullPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F597351EE14438001F7DFA /* DisplayFullPhotoViewController.swift */; };
+		85F597381EE14AE7001F7DFA /* FullPhotoDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F597371EE14AE7001F7DFA /* FullPhotoDisplayDelegate.swift */; };
 		C39994C910FAD4B2BF0B00AD /* Pods_cameraTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D22CE591C0E8A91683A886AE /* Pods_cameraTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		8597CF341EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		8597CF361EDE77C900DB0C79 /* MonocleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonocleViewController.swift; sourceTree = "<group>"; };
 		85F597351EE14438001F7DFA /* DisplayFullPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayFullPhotoViewController.swift; sourceTree = "<group>"; };
+		85F597371EE14AE7001F7DFA /* FullPhotoDisplayDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullPhotoDisplayDelegate.swift; sourceTree = "<group>"; };
 		D22CE591C0E8A91683A886AE /* Pods_cameraTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cameraTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 		8597CF3A1EDE9C0200DB0C79 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				85F597371EE14AE7001F7DFA /* FullPhotoDisplayDelegate.swift */,
 				8597CF341EDE5DE200DB0C79 /* PhotoCaptureDelegate.swift */,
 			);
 			name = Delegates;
@@ -268,6 +271,7 @@
 				85F597361EE14438001F7DFA /* DisplayFullPhotoViewController.swift in Sources */,
 				8597CF241EDE5A1E00DB0C79 /* cameraTest.xcdatamodeld in Sources */,
 				8597CF331EDE5A7100DB0C79 /* PreviewView.swift in Sources */,
+				85F597381EE14AE7001F7DFA /* FullPhotoDisplayDelegate.swift in Sources */,
 				8597CF371EDE77C900DB0C79 /* MonocleViewController.swift in Sources */,
 				8597CF1C1EDE5A1E00DB0C79 /* AppDelegate.swift in Sources */,
 				1714B8A31EDF3B7800176D18 /* AlamofireService.swift in Sources */,
