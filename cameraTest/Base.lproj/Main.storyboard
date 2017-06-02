@@ -137,11 +137,53 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="ddw-qv-ISl" id="DoI-Z5-OQJ"/>
+                        <segue destination="1U4-VN-blH" kind="presentation" identifier="FullPhotoSegue" id="wvm-zZ-FHo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htZ-uk-cYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1840.8" y="65.217391304347828"/>
+        </scene>
+        <!--Display Full Photo View Controller-->
+        <scene sceneID="ntm-ht-a3g">
+            <objects>
+                <viewController id="1U4-VN-blH" customClass="DisplayFullPhotoViewController" customModule="cameraTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M0y-mS-XAJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="XG3-X0-nJL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dsz-so-wdK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A9Y-gR-8TG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMH-DT-p8Q">
+                                <rect key="frame" x="149" y="617" width="76" height="30"/>
+                                <state key="normal" title="Close View"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="1U4-VN-blH" eventType="touchUpInside" id="AP7-pP-oVm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XG3-X0-nJL" firstAttribute="top" secondItem="A9Y-gR-8TG" secondAttribute="bottom" id="0Xw-Hu-D1U"/>
+                            <constraint firstAttribute="trailing" secondItem="A9Y-gR-8TG" secondAttribute="trailing" id="3Cj-op-F0D"/>
+                            <constraint firstItem="A9Y-gR-8TG" firstAttribute="top" secondItem="dsz-so-wdK" secondAttribute="top" id="8Af-zA-Bmt"/>
+                            <constraint firstItem="cMH-DT-p8Q" firstAttribute="centerX" secondItem="dsz-so-wdK" secondAttribute="centerX" id="GuW-Qd-2CW"/>
+                            <constraint firstItem="A9Y-gR-8TG" firstAttribute="leading" secondItem="dsz-so-wdK" secondAttribute="leading" id="Kk5-Nf-5vd"/>
+                            <constraint firstItem="XG3-X0-nJL" firstAttribute="top" secondItem="cMH-DT-p8Q" secondAttribute="bottom" constant="20" id="Pun-42-21t"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fullPhotoImageView" destination="A9Y-gR-8TG" id="alH-Kq-ITx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kGL-Sh-jfB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2656.8000000000002" y="66.11694152923539"/>
         </scene>
     </scenes>
     <resources>

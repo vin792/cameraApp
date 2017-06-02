@@ -28,11 +28,9 @@ class AnnotationView: ARAnnotationView {
         
         let alamofire = AlamofireService()
         
-        image?.removeFromSuperview()
         image = UIImageView(frame: CGRect(x: 10, y: 30, width: 135, height: 240))
         image?.layer.borderColor = UIColor.black.cgColor
         image?.layer.borderWidth = 1
-        image?.isUserInteractionEnabled = true
         
         alamofire.getS3Image(fileLocation: (annotation?.identifier)!, completionHandler: {s3Image in
             
@@ -55,8 +53,8 @@ class AnnotationView: ARAnnotationView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        distanceLabel?.frame = CGRect(x: 10, y: 30, width: 135, height: 20)
         image?.frame = CGRect(x: 10, y: 30, width: 135, height: 240)
+        distanceLabel?.frame = CGRect(x: 10, y: 30, width: 135, height: 20)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

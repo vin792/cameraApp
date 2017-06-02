@@ -81,7 +81,13 @@ class MonocleViewController: UIViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FullPhotoSegue" {
+            let controller = segue.destination as! DisplayFullPhotoViewController
+            controller.imageToDisplay = sender as? UIImage
+        }
+    }
 }
 
 extension MonocleViewController: CLLocationManagerDelegate {
@@ -111,7 +117,7 @@ extension MonocleViewController: ARDataSource {
         let annotationView = AnnotationView()
         annotationView.annotation = viewForAnnotation
         annotationView.delegate = self
-        annotationView.frame = CGRect(x: 0, y: 0, width: 150, height: 50)
+        annotationView.frame = CGRect(x: 0, y: 0, width: 135, height: 240)
         
         return annotationView
     }
@@ -119,7 +125,8 @@ extension MonocleViewController: ARDataSource {
 
 extension MonocleViewController: AnnotationViewDelegate {
     func didTouch(annotationView: AnnotationView) {
-        print("Tapped view for POI:")
+        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "FullPhotoSegue", sender: annotationView.image?.image)
     }
 }
 
