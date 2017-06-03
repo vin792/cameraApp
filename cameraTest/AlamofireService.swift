@@ -51,11 +51,11 @@ class AlamofireService {
                     let longitude  = photoDict["longitude"] as! CLLocationDegrees
                     let photoName = photoDict["_id"] as! String
                     let filePath = photoDict["location"] as! String
-                    let userName = photoDict["username"] as! String
+                    let username = photoDict["username"] as! String
                     
                     let location = CLLocation(latitude: latitude, longitude: longitude)
                     
-                    let newARAnnotation = ARAnnotation(identifier: filePath, title: userName, location: location)
+                    let newARAnnotation = ARAnnotation(identifier: filePath, title: username, location: location)
                     
                     if let newARAnno = newARAnnotation {
                         annotations.append(newARAnno)
@@ -91,7 +91,7 @@ class AlamofireService {
             "latitude": latitude,
             "longitude": longitude,
             "altitude": altitude,
-            "username": userName]
+            "username": username]
         
         Alamofire.upload(multipartFormData: { multiPartFormData in
             
