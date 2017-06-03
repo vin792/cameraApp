@@ -60,7 +60,7 @@ class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
             imageDataToSave["latitude"] = userLocation.coordinate.latitude
             imageDataToSave["longitude"] = userLocation.coordinate.longitude
             imageDataToSave["altitude"] = userLocation.altitude
-            imageDataToSave["username"] = "user1"
+            imageDataToSave["username"] = "generic user"
         } else {
             print("unable to get user location")
         }

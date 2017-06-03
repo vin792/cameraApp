@@ -135,6 +135,7 @@ extension MonocleViewController: FullPhotoDisplayDelegate {
     func dismissView() {
         dismiss(animated: true, completion: nil)
         showAR()
+
     }
 }
 

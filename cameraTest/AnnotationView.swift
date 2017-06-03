@@ -43,6 +43,7 @@ class AnnotationView: ARAnnotationView {
             self.distanceLabel?.textColor = UIColor.green
             self.distanceLabel?.font = UIFont.systemFont(ofSize: 12)
             self.addSubview(self.distanceLabel!)
+        
             
             if let annotation = self.annotation {
                 self.distanceLabel?.text = String(format: "%.2f km", annotation.distanceFromUser / 1000)
